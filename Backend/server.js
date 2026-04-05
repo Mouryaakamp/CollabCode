@@ -1,14 +1,23 @@
 const express = require('express');
 var cors = require('cors')
-const app = express();
-const createServer = require('http').createServer();
-const io = require('server.io')(createServer);
+const { createServer } = require('http');
 const Server = require('socket.io');
 const { YSocketIO } = require('y-socket.io/dist/server');
 
-
-
+const app = express();
 app.use(cors())
+const httpserver=createServer(app);
+
+
+const io=Server(httpserver,{
+    cors:{
+        origin:"*",
+        methods:["GET","POST"]
+    }
+})
+
+const ysocket = new YSocketIO(io)
+ysocket.initialize()
 
 app.get("/", (req, res) => {
     res.status(200).send("Server running successfully ")
@@ -21,6 +30,6 @@ app.get("/health", (req, res) => {
     })
 })
 
-app.listen(8000, () => {
+httpserver.listen(8000, () => {
     console.log("Server running on port 8000");
 })
