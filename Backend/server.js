@@ -5,6 +5,7 @@ const Server = require('socket.io');
 const { YSocketIO } = require('y-socket.io/dist/server');
 
 const app = express();
+app.use(express.static("public"))
 app.use(cors())
 const httpserver=createServer(app);
 
@@ -19,9 +20,7 @@ const io=Server(httpserver,{
 const ysocket = new YSocketIO(io)
 ysocket.initialize()
 
-app.get("/", (req, res) => {
-    res.status(200).send("Server running successfully ")
-})
+
 
 app.get("/health", (req, res) => {
     res.status(200).json({
