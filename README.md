@@ -53,7 +53,7 @@ Make sure Docker is installed and running.
 docker build -t collabcode .
 docker run -p 3000:3000 collabcode
 
-### open is browser 
+### 3. open is browser 
 http://localhost:3000
 
 ## 📦 Deployment  
@@ -62,7 +62,7 @@ http://localhost:3000
 - Traffic handled via **Application Load Balancer (ALB)**  
 
 ---
-
+a
 ## 📌 Future Improvements  
 - Authentication system  
 - Multiple rooms support  
