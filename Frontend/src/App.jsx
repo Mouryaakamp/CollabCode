@@ -40,12 +40,22 @@ function App() {
       provider.awareness.setLocalStateField("user", { username })
 
 
+      provider.awareness.setLocalStateField("user", { username })
 
-      provider.awareness.on("change", () => {
+      const updateUsers = () => {
         const states = Array.from(provider.awareness.getStates().values())
-        setuser(states.filter(state => state.user && state.user.username)   // only keep valid users
-          .map(state => state.user))
-      })
+        setuser(
+          states
+            .filter(state => state.user && state.user.username)
+            .map(state => state.user)
+        )
+      }
+
+      // listen for changes
+      provider.awareness.on("change", updateUsers)
+
+      // 🔥 IMPORTANT: call once initially
+      updateUsers()
       function handlebeforeunload() {
         provider.awareness.setLocalStateField("user", null)
       }
