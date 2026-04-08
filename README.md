@@ -43,7 +43,7 @@ http://docker-collabcode-aws-alb-203134975.eu-north-1.elb.amazonaws.com/
 ## 🏃‍♂️ Run Locally  
 
 ### 1. Clone the Repository  
-```bash
+bash
 git clone https://github.com/your-username/collabcode.git
 cd collabcode
 
