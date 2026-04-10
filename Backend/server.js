@@ -1,9 +1,11 @@
 const express = require('express');
+const dotenv=require('dotenv')
 var cors = require('cors')
 const { createServer } = require('http');
 const Server = require('socket.io');
 const { YSocketIO } = require('y-socket.io/dist/server');
 
+dotenv.config();
 const app = express();
 app.use(express.static("public"))
 app.use(cors())
